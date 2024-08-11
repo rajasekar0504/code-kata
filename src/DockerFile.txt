@@ -1,0 +1,11 @@
+# Use a slim Python 3.9 image as the base
+FROM python:3.9.19-slim
+
+# Copy Python scripts into the /software directory in the Docker image
+COPY *.py software/
+
+# Set the working directory to /software
+WORKDIR /software
+
+# Run the scripts sequentially
+CMD ["sh", "-c", "python fixedfile.py --output output.txt && python parsefile.py --output output.csv"]
